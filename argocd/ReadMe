@@ -1,0 +1,16 @@
+Create a namespace for ArgoCD:
+  kubectl create namespace argocd
+
+Install ArgoCD using its manifests:
+  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+Verify the installation:
+  kubectl get pods -n argocd
+
+Access ArgoCD UI:
+  kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 8080:443
+
+Get Initial Admin Password:
+  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+Log in to ArgoCD UI and create app
