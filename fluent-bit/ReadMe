@@ -1,1 +1,18 @@
 
+minikube start
+
+kubectl create namespace logging
+
+kubectl apply -f fluent-bit-configmap.yaml
+
+kubectl apply -f fluent-bit-daemonset.yaml
+
+kubectl apply -f log-generator.yaml
+
+kubectl logs -n logging <fluent-bit-pod-name>
+
+Install splunk
+docker pull splunk/splunk:latest
+
+Run splunk
+docker run -d -p 8000:8000 -p 8088:8088 -p 9997:9997 \\n  -e SPLUNK_START_ARGS="--accept-license" \\n  -e SPLUNK_PASSWORD="admin" \\n  --name splunk splunk/splunk:latest
