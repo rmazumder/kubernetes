@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: log-generator
+  namespace: logging
+spec:
+  containers:
+  - name: log-generator
+    image: busybox
+    command: ['sh', '-c', 'while true; do echo "Hello Fluent Bit!"; sleep 5; done']
