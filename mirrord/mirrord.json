@@ -1,0 +1,19 @@
+{
+  "target": {
+    "namespace": "default",
+    "deployment": "hello-world-app-1"
+  },
+  "feature": {
+    "network": {
+      "incoming": "mirror",
+      "outgoing": true
+    },
+    "fs": {
+      "mode": "read",
+      "read_write": ["./local-dir"]
+    },
+    "env": {
+      "include": ["*"]
+    }
+  }
+}
