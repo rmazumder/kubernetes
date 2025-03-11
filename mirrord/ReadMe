@@ -1,0 +1,11 @@
+Install mirrord
+curl -fsSL https://raw.githubusercontent.com/metalbear-co/mirrord/main/scripts/install.sh | bash
+
+Create a application to deploy
+ docker build -t hello-world-app .
+ kubectl apply -f deployment.yaml
+
+run application with mirrord
+mirrord exec -f mirrord.json -- python3 app.py
+or
+mirrord exec --target deployment/hello-world-app -- python3 app.py
